@@ -86,3 +86,43 @@ console.log(theHobbit.info());
 
 
 //Alright, and unto protoypes I go.
+
+//Every Object in javascript has a prototype
+
+//to actually see a prototype in action, we'll start with my own prototype that was recently made. The player1
+
+
+
+Object.getPrototypeOf(player1) === Player.prototype; //returns true (in the example but I dunno how to console.log this)
+
+
+//All objects have a prototype, and the prototype of an object contains a prototype... SOOO
+
+
+
+//So I literally copied and pasted the code below and it didn't work... Dunno what to say about tha tone
+
+
+ 
+Player.prototype.sayHello = function() {
+    console.log("Hello, I'm a player!");
+ };
+ /**
+ player1.sayHello(); // logs "Hello, I'm a player!"
+ player2.sayHello(); // logs "Hello, I'm a player!"
+ 
+ **/
+
+//The purpose of the code above was to show that you can add a function to the prototype of an object, and the children of the object will inherit whatever you gave it. In that example, it was a function named sayHello, that the children player1, and player2, that I made can call upon. That's how it was supposed to be.
+
+
+
+console.log(player1.valueOf());
+
+//note, every prototype object inherits from Object.prototype by default
+
+//an objects Object.getPrototypeOf() value can only be one unique prototype object
+
+//the Object.getPrototypeOf() get's or views the prototype of an object
+
+//Object.setPrototypeOf() "sets" or mutates it
