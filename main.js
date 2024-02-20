@@ -126,3 +126,60 @@ console.log(player1.valueOf());
 //the Object.getPrototypeOf() get's or views the prototype of an object
 
 //Object.setPrototypeOf() "sets" or mutates it
+
+
+//with the prototype method - it can save a lot of memory because you just have to type it out once, and every time it is called upon uniquely within an "instance", it goes down the prototype chain 
+
+//the period that you see attached to a method is called a member access operator. it is allowing access to a method that it is attached to. 
+
+//The this keyword won't point directly to the prototype object it is in, rather to the object that first invokes the "this" keyword
+
+function Dog (name, breed, color){ //this is a constructor function
+    this.name = name;
+    this.breed = breed;
+    this.color = color;
+}
+
+const dog1 = new Dog( //notice how this is not a curly brace. earlier in the practice it was all within the same line
+
+    "Daisy",
+    "Labrador",
+    "black"
+)
+
+const dog2 = new Dog(
+    "Jack",
+    "Labrador",
+    "white"
+)
+
+
+Dog.prototype.bark = function (){ //when dog1 or dog2 is called upon with .bark() attached, it will say "Woof" in the console. HOWEVER, even though it is attached to the Dog prototype, if I type in Dog.bark() in the console, I get an uncaught error
+    return 'Woof'
+}
+
+
+class Cat{ //this is refered to as "syntactical sugar". It does the same thing as the prototype, but makes it easier to extend with (supposedly)
+    constructor(name, breed, color){
+        this.name = name
+        this.breed = breed
+        this.color = color
+    }
+    meow(){
+        return "meow!"
+    }
+}
+
+class tabby extends Cat {
+    constructor(name){
+        super(name)
+    } 
+    smallMeow(){
+        return "small meow!"
+    }
+}
+
+const myPet = new tabby ("ChiChi") //So "myPet" has access to both the tabby.prototype and the cat.prototype, and automitcally the object.prototype since cat.prototype is an object
+
+//"myPet" has access to both the "small meow!" and the "meow!" method within the class tabby and class cat, because the tabby class is a prototype / extension of the cat class and javascript goes down the prototype line to find the requested methods.
+
